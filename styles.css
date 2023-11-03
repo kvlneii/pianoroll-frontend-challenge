@@ -7,8 +7,8 @@
 body {
   font-family: 'Mulish', sans-serif;
   cursor: default;
-  background-color: #F0F0F0;
-  color: #1C1C1A;
+  background-color: #f0f0f0;
+  color: #1c1c1a;
   height: 100vh; /* Use viewport height instead of 100% to occupy full screen height */
   text-align: center;
   overflow: auto;
@@ -22,19 +22,13 @@ body {
   align-items: center;
   justify-content: space-between;
   background-color: #154151;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);  /* optional drop shadow */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* optional drop shadow */
 }
 
 .logo-container img {
   height: 40px;
   width: auto;
   fill: white;
-}
-
-#pianoRollContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 h1 {
@@ -45,19 +39,16 @@ h1 {
 button {
   padding: 15px 25px;
   font-size: 18px;
-  color: #F0F0F0;
+  color: #f0f0f0;
   background-color: #944038;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
   border-radius: 5px;
-}
-
-button {
-  /* ... existing button styles ... */
-  border-bottom: 3px solid #381815;  /* A darker shade for 3D effect */
-  position: relative;  /* Required for the top movement on hover */
-  transition: all 1.1s ease;  /* Transition for all properties */
+  border-bottom: 3px solid #381815; /* A darker shade for 3D effect */
+  position: relative; /* Required for the top movement on hover */
+  transition: all 1.1s ease; /* Transition for all properties */
+  margin-bottom: 10px;
 }
 
 #buttonContainer {
@@ -69,18 +60,141 @@ button:hover {
   transform: scale(1.05);
 }
 
-.piano-roll-svg {
+#piano-roll__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#piano-roll__container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+#piano-roll__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 10px;
+  width: 100%;
+}
+
+#piano-roll__grid.closed {
+  height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  grid-template-columns: 1fr;
+  width: 30%;
+  margin-left: 20px;
+}
+
+#piano-roll__main {
+  display: none;
+  width: 70%;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+#piano-roll__main.show {
+  display: flex;
+}
+
+#selection-info {
+  text-align: center;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 1350px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  #piano-roll__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  h1 {
+    font-size: 26px;
+  }
+
+  #piano-roll__container {
+    flex-direction: column;
+  }
+
+  #piano-roll__grid.closed {
+    margin-top: 40px;
+    width: 70%;
+    margin-left: 0;
+  }
+
+  #piano-roll__main.show {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 22px;
+  }
+
+  #piano-roll__grid {
+    grid-template-columns: 1fr;
+  }
+
+  #piano-roll__grid.closed {
+    width: 90%;
+    margin: 40px auto 0;
+  }
+
+  #piano-roll__main .piano-roll__svg {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  #piano-roll__grid.closed {
+    grid-template-columns: 1fr;
+    height: inherit;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  #piano-roll__grid {
+    grid-template-columns: 1fr;
+  }
+
+  #piano-roll__main .piano-roll__svg {
+    height: 160px;
+  }
+}
+
+.piano-roll__svg {
   border: 2px solid #381815;
 }
 
-.piano-roll-card {
+.piano-roll__card {
   border: 1px solid #ccc;
-  margin-bottom: 10px;
   padding: 10px;
-  width: 50%;
   box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  transition: all ease 0.3s;
+  cursor: pointer;
 }
 
-.description {
-  margin-top: 10px;
+.piano-roll__card:not(.main):hover,
+.piano-roll__card:not(.main).active {
+  background-color: #16809b39;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.piano-roll__description {
+  margin: 10px auto;
 }
