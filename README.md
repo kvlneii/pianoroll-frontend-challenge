@@ -1,5 +1,12 @@
 # PianoRoll Frontend Task
 
+## Record
+
+
+https://github.com/kvlneii/pianoroll-frontend-challenge/assets/95699279/2f0451de-7ef1-4bad-9b2a-b78dd991e802
+
+
+
 ## Introduction
 
 You will be building on top of a demo code that generates a widget for browsing Piano Rolls - the core element of [Piano Roll](https://pianoroll.io).
